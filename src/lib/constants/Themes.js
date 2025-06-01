@@ -1,15 +1,21 @@
+import { SunIcon } from '../../icons/SunIcon';
+import { MoonIcon } from '../../icons/MoonIcon';
+
 const Themes = {
     auto: {
-        icon: '',
+        Icon: null,
         value: 'auto',
+        label: 'Auto',
     },
     light: {
-        icon: '',
+        Icon: SunIcon,
         value: 'light',
+        label: 'Light',
     },
     dark: {
-        icon: '',
+        Icon: MoonIcon,
         value: 'dark',
+        label: 'Dark',
     },
 };
 

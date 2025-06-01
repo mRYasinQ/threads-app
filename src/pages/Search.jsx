@@ -1,6 +1,6 @@
 import { Sidebar } from '../components/Sidebar';
 
-const Home = () => {
+const Search = () => {
     return (
         <>
             <Sidebar />
@@ -9,4 +9,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Search;
