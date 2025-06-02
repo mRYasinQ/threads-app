@@ -1,5 +1,5 @@
 @layer base {
     body {
-        @apply bg-neutral-100 transition-all select-none dark:bg-neutral-900;
+        @apply bg-gray-100 transition-all select-none dark:bg-black;
     }
 }

@@ -11,25 +11,25 @@ export const SidebarTheme = ({ menuDispatch }) => {
     const { theme, setTheme } = useContext(ThemeContext);
 
     return (
-        <div className="absolute top-0 left-0 flex h-fit w-80 -translate-y-full flex-col gap-4 rounded-2xl border border-neutral-400/40 bg-neutral-50 p-4 shadow-lg shadow-neutral-300/40 dark:border-neutral-500/30 dark:bg-neutral-800/50 dark:shadow-neutral-900/60">
+        <div className="absolute top-0 left-0 flex h-fit w-80 -translate-y-full flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-xs dark:border-gray-800 dark:bg-gray-900">
             <div className="flex items-center gap-2">
                 <div
                     onClick={() => menuDispatch({ type: 'SHOW_MENU' })}
-                    className="size-8 cursor-pointer stroke-neutral-900 dark:stroke-neutral-200"
+                    className="size-8 cursor-pointer stroke-gray-800 dark:stroke-gray-200"
                 >
                     <ArrowLeftIcon />
                 </div>
-                <span className="text-base font-semibold text-neutral-900 dark:text-neutral-200">Appearance</span>
+                <span className="text-base font-semibold text-gray-800 dark:text-gray-200">Appearance</span>
             </div>
-            <div className="flex rounded-xl bg-neutral-100 dark:bg-neutral-900">
+            <div className="flex rounded-xl bg-gray-100 dark:bg-black">
                 {Object.values(Themes).map(({ Icon, value, label }) => (
                     <div
                         key={value}
                         onClick={() => setTheme(value)}
                         className={clsx(
-                            'flex w-full cursor-pointer justify-center stroke-neutral-700/60 px-5 py-4 text-neutral-700/60 dark:stroke-neutral-500 dark:text-neutral-500',
+                            'flex w-full cursor-pointer justify-center stroke-gray-300 px-5 py-4 text-gray-300 dark:stroke-gray-700 dark:text-gray-700',
                             value === theme &&
-                                'bg-neutral rounded-xl border border-neutral-400/40 bg-neutral-50 !stroke-neutral-900 !text-neutral-900 dark:border-neutral-500/30 dark:bg-neutral-800/50 dark:!stroke-neutral-200 dark:!text-neutral-200',
+                                'rounded-xl border border-gray-200 bg-white !stroke-gray-800 !text-gray-800 dark:border-gray-800 dark:bg-gray-900 dark:!stroke-gray-200 dark:!text-gray-200',
                         )}
                     >
                         {Icon ? (
