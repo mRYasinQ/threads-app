@@ -3,6 +3,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { useAddReportMutation } from '../../app/services/threadApi';
 
+import useNotif from '../../lib/hooks/useNotif';
+
 import reportSchema from '../../lib/schemas/reportSchema';
 
 export const ReportProblemForm = ({ closeModal }) => {
@@ -14,15 +16,15 @@ export const ReportProblemForm = ({ closeModal }) => {
 
     const [addReport] = useAddReportMutation();
 
+    const { showNotif } = useNotif();
+
     const submitReport = async (data) => {
         try {
             await addReport(data).unwrap();
 
-            // TODO:
-            console.log('Success.');
+            showNotif('Thank you for reporting this problem.', 'bottom');
         } catch (error) {
-            // TODO:
-            console.log('Error.');
+            showNotif('Problem exist.', 'bottom');
         } finally {
             closeModal();
         }

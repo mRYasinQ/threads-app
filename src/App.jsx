@@ -5,6 +5,7 @@ import ThemeProvider from './lib/context/Theme.jsx';
 
 import routes from './app/routes.js';
 import store from './app/store.js';
+import { AuthController } from './features/auth/AuthController.jsx';
 
 const App = () => {
     return (
