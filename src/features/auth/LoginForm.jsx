@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -9,6 +10,8 @@ import { SubmitButton } from '../../components/Form/SubmitButton';
 import { useLazyLoginQuery } from '../../app/services/threadApi';
 
 import useNotif from '../../lib/hooks/useNotif';
+
+import { setIsAuthenticated } from './authSlice';
 
 import loginSchema from '../../lib/schemas/loginSchema';
 
@@ -21,6 +24,7 @@ export const LoginForm = () => {
         formState: { errors },
     } = useForm({ resolver: zodResolver(loginSchema) });
 
+    const dispatch = useDispatch();
     const [loginUser] = useLazyLoginQuery();
 
     const navigate = useNavigate();
@@ -29,10 +33,20 @@ export const LoginForm = () => {
 
     const loginHandler = async (data) => {
         try {
-            await loginUser(data).unwrap();
+            const result = await loginUser(data).unwrap();
 
-            showNotif('Log In Successfully.', 'bottom');
-            navigate('/');
+            if (result.length > 0) {
+                const user = result[0];
+
+                localStorage.setItem('userId', user.id);
+                localStorage.setItem('fullName', `${user.first_name} ${user.last_name}`);
+                dispatch(setIsAuthenticated(true));
+
+                showNotif('Log In Successfully.', 'bottom');
+                navigate('/');
+            } else {
+                showNotif('Email or password wrong.', 'top');
+            }
         } catch (error) {
             showNotif('Problem exist.', 'top');
         }
