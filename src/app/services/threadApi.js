@@ -9,6 +9,13 @@ const threadApi = api.injectEndpoints({
                 body: reportData,
             }),
         }),
+        addPost: builder.mutation({
+            query: (postData) => ({
+                url: '/posts',
+                method: 'post',
+                body: postData,
+            }),
+        }),
         register: builder.mutation({
             query: (newUserData) => ({
                 url: '/users',
@@ -30,4 +37,5 @@ const threadApi = api.injectEndpoints({
 });
 
 export default threadApi;
-export const { useAddReportMutation, useRegisterMutation, useLoginQuery, useLazyLoginQuery } = threadApi;
+export const { useAddReportMutation, useAddPostMutation, useRegisterMutation, useLoginQuery, useLazyLoginQuery } =
+    threadApi;
