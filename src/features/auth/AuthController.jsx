@@ -9,7 +9,15 @@ export const AuthController = () => {
     return (
         <>
             <div className="fixed top-8 right-6">
-                {isAuthenticated ? <Button href="/post/add">Add Post</Button> : <Button href="/login">Log In</Button>}
+                {isAuthenticated ? (
+                    <Button href="/post/add" className="relative z-10">
+                        Add Post
+                    </Button>
+                ) : (
+                    <Button href="/login" className="relative z-10">
+                        Log In
+                    </Button>
+                )}
                 <Outlet />
             </div>
         </>

@@ -16,6 +16,29 @@ const threadApi = api.injectEndpoints({
                 body: postData,
             }),
         }),
+        getPosts: builder.infiniteQuery({
+            infiniteQueryOptions: {
+                initialPageParam: 1,
+
+                getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams, queryArg = {}) => {
+                    const { limit = 10 } = queryArg;
+                    return lastPage.length < limit ? undefined : lastPageParam + 1;
+                },
+            },
+            query: ({ queryArg = {}, pageParam }) => {
+                const { contentLike, limit = 10 } = queryArg;
+
+                return {
+                    url: '/posts',
+                    method: 'get',
+                    params: {
+                        content_like: contentLike,
+                        _page: pageParam,
+                        _limit: limit,
+                    },
+                };
+            },
+        }),
         register: builder.mutation({
             query: (newUserData) => ({
                 url: '/users',
@@ -37,5 +60,11 @@ const threadApi = api.injectEndpoints({
 });
 
 export default threadApi;
-export const { useAddReportMutation, useAddPostMutation, useRegisterMutation, useLoginQuery, useLazyLoginQuery } =
-    threadApi;
+export const {
+    useAddReportMutation,
+    useAddPostMutation,
+    useGetPostsInfiniteQuery,
+    useRegisterMutation,
+    useLoginQuery,
+    useLazyLoginQuery,
+} = threadApi;
