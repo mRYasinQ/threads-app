@@ -22,7 +22,7 @@ export const SidebarMenu = ({ menuData: { activeMenu, activeThemeMenu }, menuDis
     };
 
     return (
-        <div className="relative">
+        <div className="relative hidden md:block">
             <div
                 onClick={() => menuDispatch({ type: 'TOGGLE_MENU' })}
                 className={clsx(
