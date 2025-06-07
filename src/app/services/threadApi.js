@@ -15,10 +15,24 @@ const threadApi = api.injectEndpoints({
                 method: 'post',
                 body: postData,
             }),
-            invalidatesTags: (result, error, arg) => [
+            invalidatesTags: (result) => [
                 { type: 'Posts', id: result.id },
                 { type: 'Posts', id: 'LIST' },
             ],
+        }),
+        getPostList: builder.query({
+            query: (query, limit = 5) => ({
+                url: '/posts',
+                method: 'get',
+                params: {
+                    content_like: query,
+                    _limit: limit,
+                },
+            }),
+            providesTags: (result) =>
+                result
+                    ? [...result.map(({ id }) => ({ type: 'Posts', id })), { type: 'Posts', id: 'LIST' }]
+                    : [{ type: 'Posts', id: 'LIST' }],
         }),
         getPosts: builder.infiniteQuery({
             infiniteQueryOptions: {
@@ -45,7 +59,7 @@ const threadApi = api.injectEndpoints({
             providesTags: (result) =>
                 result
                     ? [
-                          ...result.pages.map((posts) => posts.map(({ id }) => ({ type: 'Posts', id }))),
+                          ...result.pages.flatMap((posts) => posts.map(({ id }) => ({ type: 'Posts', id }))),
                           { type: 'Posts', id: 'LIST' },
                       ]
                     : [{ type: 'Posts', id: 'LIST' }],
@@ -77,6 +91,8 @@ export default threadApi;
 export const {
     useAddReportMutation,
     useAddPostMutation,
+    useGetPostListQuery,
+    useLazyGetPostListQuery,
     useGetPostsInfiniteQuery,
     useGetPostQuery,
     useLazyGetPostQuery,
