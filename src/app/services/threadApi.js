@@ -15,6 +15,10 @@ const threadApi = api.injectEndpoints({
                 method: 'post',
                 body: postData,
             }),
+            invalidatesTags: (result, error, arg) => [
+                { type: 'Posts', id: result.id },
+                { type: 'Posts', id: 'LIST' },
+            ],
         }),
         getPosts: builder.infiniteQuery({
             infiniteQueryOptions: {
@@ -38,6 +42,16 @@ const threadApi = api.injectEndpoints({
                     },
                 };
             },
+            providesTags: (result) =>
+                result
+                    ? [
+                          ...result.pages.map((posts) => posts.map(({ id }) => ({ type: 'Posts', id }))),
+                          { type: 'Posts', id: 'LIST' },
+                      ]
+                    : [{ type: 'Posts', id: 'LIST' }],
+        }),
+        getPost: builder.query({
+            query: (postId) => `/posts/${postId}`,
         }),
         register: builder.mutation({
             query: (newUserData) => ({
@@ -64,6 +78,8 @@ export const {
     useAddReportMutation,
     useAddPostMutation,
     useGetPostsInfiniteQuery,
+    useGetPostQuery,
+    useLazyGetPostQuery,
     useRegisterMutation,
     useLoginQuery,
     useLazyLoginQuery,

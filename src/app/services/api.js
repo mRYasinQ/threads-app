@@ -11,6 +11,7 @@ const baseQueryWithRetries = retry(baseQuery, { maxRetries: 3 });
 const api = createApi({
     reducerPath: 'threadApi',
     baseQuery: baseQueryWithRetries,
+    tagTypes: ['Posts'],
     endpoints: () => ({}),
 });
 

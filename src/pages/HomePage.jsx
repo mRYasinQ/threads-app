@@ -5,7 +5,7 @@ import { Posts } from '../features/post/Posts';
 
 const SITE_NAME = import.meta.env.VITE_SITE_NAME;
 
-const Home = () => {
+const HomePage = () => {
     return (
         <>
             <Helmet>
@@ -19,4 +19,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomePage;

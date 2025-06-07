@@ -4,7 +4,7 @@ import { LoginForm } from '../features/auth/LoginForm';
 
 const SITE_NAME = import.meta.env.VITE_SITE_NAME;
 
-const Login = () => {
+const LoginPage = () => {
     return (
         <>
             <Helmet>
@@ -15,4 +15,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginPage;

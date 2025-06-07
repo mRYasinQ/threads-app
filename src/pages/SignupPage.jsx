@@ -4,7 +4,7 @@ import { SingupForm } from '../features/auth/SingupForm';
 
 const SITE_NAME = import.meta.env.VITE_SITE_NAME;
 
-const Signup = () => {
+const SignupPage = () => {
     return (
         <>
             <Helmet>
@@ -15,4 +15,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default SignupPage;

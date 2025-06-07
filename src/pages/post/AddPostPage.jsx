@@ -4,7 +4,7 @@ import { AddPostForm } from '../../features/post/AddPostForm';
 
 const SITE_NAME = import.meta.env.VITE_SITE_NAME;
 
-const AddPost = () => {
+const AddPostPage = () => {
     return (
         <>
             <Helmet>
@@ -15,4 +15,4 @@ const AddPost = () => {
     );
 };
 
-export default AddPost;
+export default AddPostPage;

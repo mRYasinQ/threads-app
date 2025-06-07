@@ -4,7 +4,7 @@ import { Sidebar } from '../components/Sidebar';
 
 const SITE_NAME = import.meta.env.VITE_SITE_NAME;
 
-const Search = () => {
+const SearchPage = () => {
     return (
         <>
             <Helmet>
@@ -16,4 +16,4 @@ const Search = () => {
     );
 };
 
-export default Search;
+export default SearchPage;

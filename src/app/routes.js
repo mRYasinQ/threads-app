@@ -1,15 +1,16 @@
 import { createBrowserRouter } from 'react-router';
 
+import { NotificationController } from '../features/notification/NotificationController';
 import { AuthController } from '../features/auth/AuthController';
 import { PublicRoute } from '../lib/guards/PublicRoute';
 import { PrivateRoute } from '../lib/guards/PrivateRoute';
 
-import { NotificationController } from '../features/notification/NotificationController';
-import Home from '../pages/Home';
-import Search from '../pages/Search';
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
-import AddPost from '../pages/Post/AddPost';
+import HomePage from '../pages/HomePage';
+import SearchPage from '../pages/SearchPage';
+import LoginPage from '../pages/LoginPage';
+import SignupPage from '../pages/SignupPage';
+import AddPostPage from '../pages/post/AddPostPage';
+import PostPage from '../pages/post/PostPage';
 
 const routes = createBrowserRouter([
     {
@@ -23,11 +24,15 @@ const routes = createBrowserRouter([
                             {
                                 path: '/',
                                 index: true,
-                                Component: Home,
+                                Component: HomePage,
                             },
                             {
                                 path: 'search',
-                                Component: Search,
+                                Component: SearchPage,
+                            },
+                            {
+                                path: 'post/:postId',
+                                Component: PostPage,
                             },
                         ],
                     },
@@ -37,13 +42,8 @@ const routes = createBrowserRouter([
                 Component: PrivateRoute,
                 children: [
                     {
-                        path: 'post',
-                        children: [
-                            {
-                                path: 'add',
-                                Component: AddPost,
-                            },
-                        ],
+                        path: 'post/add',
+                        Component: AddPostPage,
                     },
                 ],
             },
@@ -52,11 +52,11 @@ const routes = createBrowserRouter([
                 children: [
                     {
                         path: 'login',
-                        Component: Login,
+                        Component: LoginPage,
                     },
                     {
                         path: 'signup',
-                        Component: Signup,
+                        Component: SignupPage,
                     },
                 ],
             },
