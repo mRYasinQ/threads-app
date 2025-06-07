@@ -5,6 +5,7 @@ import { AuthController } from '../features/auth/AuthController';
 import { PublicRoute } from '../lib/guards/PublicRoute';
 import { PrivateRoute } from '../lib/guards/PrivateRoute';
 
+import NotFoundPage from '../pages/NotFoundPage';
 import HomePage from '../pages/HomePage';
 import SearchPage from '../pages/SearchPage';
 import LoginPage from '../pages/LoginPage';
@@ -16,6 +17,10 @@ const routes = createBrowserRouter([
     {
         Component: NotificationController,
         children: [
+            {
+                path: '*',
+                Component: NotFoundPage,
+            },
             {
                 children: [
                     {

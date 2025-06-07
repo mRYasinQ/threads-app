@@ -2,13 +2,13 @@ import { Helmet } from 'react-helmet';
 
 import { AddPostForm } from '../../features/post/AddPostForm';
 
-const SITE_NAME = import.meta.env.VITE_SITE_NAME;
+import { createPageTitle } from '../../lib/helpers/createPageTitle';
 
 const AddPostPage = () => {
     return (
         <>
             <Helmet>
-                <title>Add Post • {SITE_NAME}</title>
+                <title>{createPageTitle('Add Post')}</title>
             </Helmet>
             <AddPostForm />
         </>

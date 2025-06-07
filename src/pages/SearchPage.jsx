@@ -2,13 +2,13 @@ import { Helmet } from 'react-helmet';
 
 import { Sidebar } from '../components/Sidebar';
 
-const SITE_NAME = import.meta.env.VITE_SITE_NAME;
+import { createPageTitle } from '../lib/helpers/createPageTitle';
 
 const SearchPage = () => {
     return (
         <>
             <Helmet>
-                <title>Search • {SITE_NAME}</title>
+                <title>{createPageTitle('Search')}</title>
             </Helmet>
             <Sidebar />
             <main></main>

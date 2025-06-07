@@ -2,13 +2,13 @@ import { Helmet } from 'react-helmet';
 
 import { SingupForm } from '../features/auth/SingupForm';
 
-const SITE_NAME = import.meta.env.VITE_SITE_NAME;
+import { createPageTitle } from '../lib/helpers/createPageTitle';
 
 const SignupPage = () => {
     return (
         <>
             <Helmet>
-                <title>Signup • {SITE_NAME}</title>
+                <title>{createPageTitle('Singup')}</title>
             </Helmet>
             <SingupForm />
         </>

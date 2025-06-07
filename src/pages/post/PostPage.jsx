@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Sidebar } from '../../components/Sidebar';
 import { Post } from '../../features/post';
 
-const SITE_NAME = import.meta.env.VITE_SITE_NAME;
+import { createPageTitle } from '../../lib/helpers/createPageTitle';
 
 const PostPage = () => {
     const { postId } = useParams();
@@ -12,7 +12,7 @@ const PostPage = () => {
     return (
         <>
             <Helmet>
-                <title>Post • {SITE_NAME}</title>
+                <title>{createPageTitle('Post')}</title>
             </Helmet>
             <Sidebar />
             <main>

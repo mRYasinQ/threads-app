@@ -3,13 +3,13 @@ import { Helmet } from 'react-helmet';
 import { Sidebar } from '../components/Sidebar';
 import { Posts } from '../features/post/Posts';
 
-const SITE_NAME = import.meta.env.VITE_SITE_NAME;
+import { createPageTitle } from '../lib/helpers/createPageTitle';
 
 const HomePage = () => {
     return (
         <>
             <Helmet>
-                <title>{SITE_NAME}</title>
+                <title>{createPageTitle('Home')}</title>
             </Helmet>
             <Sidebar />
             <main>
