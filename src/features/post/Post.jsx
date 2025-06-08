@@ -11,8 +11,8 @@ export const Post = ({ postId }) => {
 
     return (
         <div className="fixed top-0 right-0 bottom-0 left-0 -z-60 h-full">
-            <div className="relative top-1/2 mx-auto h-fit w-full -translate-y-1/2 px-4 md:w-2xl md:px-0">
-                <div className="flex gap-2 rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+            <div className="relative top-1/2 mx-auto h-80 w-full -translate-y-1/2 px-4 md:w-2xl md:px-0">
+                <div className="flex h-full gap-2 overflow-y-scroll rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
                     <div>
                         <img
                             className="size-10 max-w-none rounded-full"
@@ -26,7 +26,7 @@ export const Post = ({ postId }) => {
                                 {post.author}
                             </h5>
                         </div>
-                        <p className="text-base font-medium text-gray-700 dark:text-gray-300">{post.content}</p>
+                        <p className="py-4 text-base font-medium text-gray-700 dark:text-gray-300">{post.content}</p>
                     </div>
                 </div>
             </div>
